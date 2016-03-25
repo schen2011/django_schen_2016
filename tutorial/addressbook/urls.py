@@ -8,6 +8,8 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 # admin.autodiscover()
 
 urlpatterns = patterns('',
+    url(r'^login/$', 'django.contrib.auth.views.login'),
+    url(r'^logout/$', 'django.contrib.auth.views.logout'),
 
     url(r'^$', contacts.views.ListContactView.as_view(),
     name='contacts-list',),
@@ -32,6 +34,9 @@ urlpatterns = patterns('',
 
     url(r'^editgroup/(?P<pk>\d+)/$', contacts.views.UpdateGroupView.as_view(),
     name='groups-edit',),
+    
+    url(r'^edit/(?P<pk>\d+)/addresses$', contacts.views.EditContactAddressView.as_view(),
+        name='contacts-edit-addresses',),
 )
 
 urlpatterns += staticfiles_urlpatterns()
