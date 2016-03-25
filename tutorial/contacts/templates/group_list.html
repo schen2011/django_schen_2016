@@ -4,7 +4,9 @@
 
 <ul>
   {% for group in object_list %}
-    <li class="group">{{ group }}</li>
+    <li class="group">{{ group }}
+    	(<a href="{% url "groups-edit" pk=group.id %}">edit</a>)
+    </li>
   {% endfor %}
 </ul>
 

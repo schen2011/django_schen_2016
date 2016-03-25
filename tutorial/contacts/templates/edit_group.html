@@ -1,6 +1,14 @@
-<h1>Add Group</h1>
+{% extends "base.html" %}
+{% block content %}
 
-<form action="{% url "groups-new" %}" method="POST">
+{% if group.id %}
+<h1>Edit Group</h1>
+{% else %}
+<h1>Add Group</h1>
+{% endif %}
+
+
+<form action="{{ action }}" method="POST">
   {% csrf_token %}
   <ul>
     {{ form.as_ul }}
@@ -9,3 +17,4 @@
 </form>
 
 <a href="{% url "groups-list" %}">back to list</a>
+{% endblock %}
