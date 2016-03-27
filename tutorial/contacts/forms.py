@@ -31,10 +31,6 @@ class ContactForm(forms.ModelForm):
         return super(ContactForm, self).__init__(*args, **kwargs)
         
     def clean(self):
-        if (self.cleaned_data.get('first_name') == ''):
-            raise ValidationError(
-                "Please enter your first name"
-            )
         
         if (self.cleaned_data.get('email') != 
             self.cleaned_data.get('confirm_email')):

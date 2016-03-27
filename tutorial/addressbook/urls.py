@@ -4,8 +4,8 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 
 # Uncomment the next two lines to enable the admin:
-# from django.contrib import admin
-# admin.autodiscover()
+from django.contrib import admin
+admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^login/$', 'django.contrib.auth.views.login'),
@@ -35,8 +35,13 @@ urlpatterns = patterns('',
     url(r'^editgroup/(?P<pk>\d+)/$', contacts.views.UpdateGroupView.as_view(),
     name='groups-edit',),
     
+    url(r'^deletegroup/(?P<pk>\d+)/$', contacts.views.DeleteGroupView.as_view(),
+        name='groups-delete',),
+    
     url(r'^edit/(?P<pk>\d+)/addresses$', contacts.views.EditContactAddressView.as_view(),
         name='contacts-edit-addresses',),
+        
+    url(r'^admin/', admin.site.urls),
 )
 
 urlpatterns += staticfiles_urlpatterns()
