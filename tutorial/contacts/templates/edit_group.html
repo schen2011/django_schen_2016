@@ -1,18 +1,6 @@
-{% extends "base.html" %}
-{% block content %}
-
-{% if group.id %}
-<h1>Edit Group</h1>
-{% else %}
 <h1>Add Group</h1>
-{% endif %}
 
-{% if group.id %}
-<a href='{% url "groups-delete" pk=group.id %}'>Delete Group</a>
-{% endif %}
-
-
-<form action="{{ action }}" method="POST">
+<form action="{% url "groups-new" %}" method="POST">
   {% csrf_token %}
   <ul>
     {{ form.as_ul }}
@@ -20,5 +8,4 @@
   <input id="save_group" type="submit" value="Save" />
 </form>
 
-<a href='{% url "groups-list" %}'>back to list</a>
-{% endblock %}
+<a href="{% url "groups-list" %}">back to list</a>
