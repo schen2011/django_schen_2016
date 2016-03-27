@@ -1,15 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Contacts New</h1>
+<h1>Contacts</h1>
 
 <ul>
   {% for contact in object_list %}
-    <li class="contact">
-      <a href="{{ contact.get_absulte_url }}">{{ contact }}</a>
-      (<a href="{% url 'contacts-edit' pk=contact.id %}">edit</a>)
-    </li>
+    <li class="contact">{{ contact }}</li>
   {% endfor %}
 </ul>
 
-<a href="{% url 'contacts-new' %}">add contact</a>
+<a href="{% url "contacts-new" %}">add contact</a>
 {% endblock %}
